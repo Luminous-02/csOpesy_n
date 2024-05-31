@@ -16,7 +16,6 @@ void console_manager::clear()
 	system("clear");
 #endif
 }
-
 void console_manager::screenCommand_c(const std::string &command)
 {
 	if (command == "exit")
@@ -34,16 +33,13 @@ void console_manager::screenCommand_c(const std::string &command)
 	else if (command.rfind("screen -r ", 0) == 0)
 	{
 		std::string screenName = command.substr(10);
-		if (screenContents.count(screenName))
+		// Create a new screen if it doesn't exist
+		if (!screenContents.count(screenName))
 		{
-			currentScreen = screenName; // Set the current screen
-			show(screenName);
+			screenContents[screenName] = "New screen created: " + screenName;
 		}
-		else
-		{
-			std::cout << RED << "Screen not found: " << screenName << "\n"
-					  << DEFAULT;
-		}
+		currentScreen = screenName; // Set the current screen
+		show(screenName);
 	}
 	else
 	{
