@@ -18,6 +18,7 @@ int main()
         std::getline(std::cin, command); //get the whole input line
 
         if (command == "exit") {
+            //if ()
             break; // Exit the loop and end the program
         }
         else if (command == "clear") {
