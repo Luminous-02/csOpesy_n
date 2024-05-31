@@ -1,4 +1,5 @@
 #include "console_manager.h"
+#include "command_handler.h"
 
 const std::string RED = "\033[1;31m";
 const std::string DEFAULT = "\033[0m";
@@ -23,6 +24,8 @@ void console_manager::screenCommand_c(const std::string &command)
 		if (currentScreen != "mainScreen")
 		{
 			currentScreen = "mainScreen"; // Go back to the main screen
+			clear();					  // Clear the screen
+			printHeader();				  // Print the header as if the program is starting fresh
 			show(currentScreen);
 		}
 		else
