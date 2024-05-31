@@ -1,5 +1,5 @@
 #include "console_manager.h"
-#include "command_handler.h"
+//#include "command_handler.h"
 
 const std::string RED = "\033[1;31m";
 const std::string GREEN = "\033[1;32m";
@@ -74,7 +74,7 @@ void console_manager::show(const std::string &screenName)
 	clear();
 	if (screenName == "mainScreen")
 	{
-		printHeader(); // Print the header for the main screen
+		//printHeader(); // Print the header for the main screen
 	}
 	else
 	{

@@ -5,9 +5,9 @@
 #include <cstdlib>
 
 // Text colors
-extern const std::string RED;
-extern const std::string GREEN;
-extern const std::string DEFAULT;
+const std::string RED = "\033[1;31m";
+const std::string GREEN = "\033[1;32m";
+const std::string DEFAULT = "\033[0m";
 
 // Function declarations and definitions
 void printHeader()
