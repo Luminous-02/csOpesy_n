@@ -1,5 +1,5 @@
 #include "console_manager.h"
-//#include "command_handler.h"
+// #include "command_handler.h"
 
 const std::string RED = "\033[1;31m";
 const std::string GREEN = "\033[1;32m";
@@ -27,6 +27,13 @@ void console_manager::screenCommand_c(const std::string &command)
 			currentScreen = "mainScreen"; // Go back to the main screen
 			clear();					  // Clear the screen
 			show(currentScreen);
+			std::cout << " ___   ___   ___   ___   ___   ___   _ _\n";
+			std::cout << "|  _> / __> | . | | . \\ | __> / __> | | |\n";
+			std::cout << "| <__ \\__ \\ | | | |  _/ | _>  \\__ \\ \\   /\n";
+			std::cout << "`___/ <___/ `___' |_|   |___> <___/  |_|\n";
+			std::cout << GREEN << "Hello, Welcome to CSOPESY commandline!\n"
+					  << DEFAULT;
+			std::cout << "Type '" << RED << "exit" << DEFAULT << "' to quit, '" << RED << "clear" << DEFAULT << "' to clear the screen\n";
 		}
 		else
 		{
@@ -74,7 +81,7 @@ void console_manager::show(const std::string &screenName)
 	clear();
 	if (screenName == "mainScreen")
 	{
-		//printHeader(); // Print the header for the main screen
+		// printHeader(); // Print the header for the main screen
 	}
 	else
 	{
