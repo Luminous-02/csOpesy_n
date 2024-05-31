@@ -25,7 +25,6 @@ void console_manager::screenCommand_c(const std::string &command)
 		{
 			currentScreen = "mainScreen"; // Go back to the main screen
 			clear();					  // Clear the screen
-			printHeader();				  // Print the header as if the program is starting fresh
 			show(currentScreen);
 		}
 		else
@@ -72,9 +71,16 @@ std::string console_manager::timeStamp()
 void console_manager::show(const std::string &screenName)
 {
 	clear();
-	std::cout << "Screen: " << screenName << "\n";
-	std::cout << "Content: " << screenContents[screenName] << "\n";
-	std::cout << "Timestamp: " << timeStamp() << "\n";
+	if (screenName == "mainScreen")
+	{
+		printHeader(); // Print the header for the main screen
+	}
+	else
+	{
+		std::cout << "Screen: " << screenName << "\n";
+		std::cout << "Content: " << screenContents[screenName] << "\n";
+		std::cout << "Timestamp: " << timeStamp() << "\n";
+	}
 }
 
 /*
