@@ -1,6 +1,10 @@
 #include "console_manager.h"
 #include "command_handler.h"
 
+const std::string RED = "\033[1;31m";
+const std::string GREEN = "\033[1;32m";
+const std::string DEFAULT = "\033[0m";
+
 console_manager::console_manager()
 {
 	initializeMainScreen(); // Initialize the main screen
