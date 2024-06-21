@@ -127,10 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\OPESY_MO_fix\Process.h" />
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="console_manager.h" />
     <ClInclude Include="Console.h" />
+    <ClInclude Include="Process.h" />
     <ClInclude Include="static.h" />
   </ItemGroup>
   <ItemGroup>
