@@ -30,6 +30,9 @@
     <ClInclude Include="Process.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="FCFS.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="console_manager.cpp">

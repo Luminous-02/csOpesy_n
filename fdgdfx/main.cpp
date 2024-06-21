@@ -1,5 +1,8 @@
+
 #include <iostream>
 #include "Console.h"
+#include <vector>
+/*
 
 int main()
 {
@@ -10,7 +13,7 @@ int main()
 
 	mainMenu.run();
 	return 0;
-}
+}*/
 
 /*
 else if (command == "marquee") {
@@ -33,3 +36,37 @@ else {
 
 return 0;
 }*/
+
+// main.cpp
+
+
+int main() {
+	const int NUM_PROCESSES = 10;
+	const int NUM_PRINT_COMMANDS = 100;
+	const int NUM_CORES = 4;
+
+	MainMenuConsole mainMenu;
+
+	//std::vector<Process> processes;
+
+	for (int i = 1; i <= NUM_PROCESSES; i++) {
+		Process process(i);
+
+		for (int j = 1; j <= NUM_PRINT_COMMANDS; j++) {
+			std::string command = "Print command " + std::to_string(j) + " for Process " + std::to_string(i);
+			process.addPrintCommand(command);
+		}
+
+		//processes.push_back(process);
+		/*
+		for (auto& process : processes) {
+			process.executePrintCommands();
+		}*/
+
+		mainMenu.addProcess(i, process); 
+	}
+
+	mainMenu.run();
+
+	return 0; 
+}

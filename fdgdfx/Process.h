@@ -1,44 +1,55 @@
-#pragma once
-
 #include <string>
+#include <vector>
+#include <fstream>
+#include <chrono>
 #include <ctime>
-#include <iomanip>
-#include <sstream>
 
 class Process {
 private:
-	int processID;
-	int currentLine;
-	int totalLines;
-	std::time_t timestamp;
+    int processID;
+    std::vector<std::string> printCommands;
 
 public:
-	Process(int id, int current, int total)
-		: processID(id), currentLine(current), totalLines(total), timestamp(std::time(nullptr)) {} //initialize
 
-	//get the process ID
-	int getProcessID() const {
-		return processID;
-	}
+    Process() : processID(0) {}
 
-	int getCurrentLine() const {
-		return currentLine;
-	}
+    Process(int id)
+        : processID(id) {}
 
-	int getTotalLines() const {
-		return totalLines;
-	}
+    void addPrintCommand(const std::string& command) {
+        printCommands.push_back(command);
+    }
 
-	//timestamp
-	std::string getTimeStamp() const {
-		std::ostringstream oss;
-		std::tm tm;
-		localtime_s(&tm, &timestamp); // Use localtime_s instead of localtime
-		oss << std::put_time(&tm, "%m/%d/%Y, %I:%M:%S %p");
-		return oss.str();
-	}
+    void executePrintCommands() {
+        std::string filename = "process_" + std::to_string(processID) + ".txt";
+        std::ofstream outputFile(filename);
 
-	void incrementCurrentLine() {
-		++currentLine;
-	}
+        if (outputFile.is_open()) {
+            for (const auto& command : printCommands) {
+                auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+                char timestampBuffer[26];
+                ctime_s(timestampBuffer, sizeof(timestampBuffer), &now); // Use ctime_s instead of ctime
+                outputFile << "Timestamp: " << timestampBuffer << "Command: " << command << "\n";
+            }
+            outputFile.close();
+        }
+        else {
+            std::cerr << "Unable to open file: " << filename << std::endl;
+        }
+    }
+
+    int getProcessID() const {
+        return processID;
+    }
+
+    const std::vector<std::string>& getPrintCommands() const {
+        return printCommands;
+    }
+
+    void printSchedule() const {
+        std::cout << "Schedule for Process " << processID << ":\n";
+        for (const auto& command : printCommands) {
+            std::cout << "  " << command << "\n";
+        }
+    }
 };
