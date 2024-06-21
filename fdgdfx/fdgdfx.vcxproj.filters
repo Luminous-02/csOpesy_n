@@ -15,10 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="command_handler.h">
+    <ClInclude Include="CommandHandler.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="console_manager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OPESY_MO_fix\Process.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="static.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

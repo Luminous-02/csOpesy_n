@@ -1,24 +1,15 @@
-#include "command_handler.h"
-#include "console_manager.h"
+#include <iostream>
+#include "Console.h"
 
 int main()
 {
-    console_manager cm; // Console manager instance
-    std::string command;
+	MainMenuConsole mainMenu;
+	//Process process1(1, 1, 10);
 
-    printHeader();
+	//mainMenu.addProcessConsole("process1", process1);
 
-    // While loop until user exits
-    while (true)
-    {
-        std::cout << "Enter Command: ";
-        std::getline(std::cin, command); // Get the whole input line
-
-        // The "exit" command is now handled inside the screenCommand_c method
-        cm.screenCommand_c(command);
-    }
-
-    return 0;
+	mainMenu.run();
+	return 0;
 }
 
 /*
