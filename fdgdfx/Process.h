@@ -1,55 +1,34 @@
+#pragma once
+
 #include <string>
-#include <vector>
-#include <fstream>
-#include <chrono>
-#include <ctime>
+#include <iostream>
 
-class Process {
-private:
-    int processID;
-    std::vector<std::string> printCommands;
-
+class Process
+{
 public:
+	enum class Status {
+		Running,
+		Finished
+	};
 
-    Process() : processID(0) {}
+	Process(const std::string& name, int id, int lines);
 
-    Process(int id)
-        : processID(id) {}
+	const std::string& getName() const;
+	int getID() const;
+	int getCurrentLine() const;
+	int getTotalLines() const;
+	Status getStatus() const;
 
-    void addPrintCommand(const std::string& command) {
-        printCommands.push_back(command);
-    }
+	void runProcess(); //simulate running a process
 
-    void executePrintCommands() {
-        std::string filename = "process_" + std::to_string(processID) + ".txt";
-        std::ofstream outputFile(filename);
+private:
+	std::string name;
 
-        if (outputFile.is_open()) {
-            for (const auto& command : printCommands) {
-                auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-                char timestampBuffer[26];
-                ctime_s(timestampBuffer, sizeof(timestampBuffer), &now); // Use ctime_s instead of ctime
-                outputFile << "Timestamp: " << timestampBuffer << "Command: " << command << "\n";
-            }
-            outputFile.close();
-        }
-        else {
-            std::cerr << "Unable to open file: " << filename << std::endl;
-        }
-    }
+	int id;
+	int currentLine;
+	int totalLines;
+	Status status;
 
-    int getProcessID() const {
-        return processID;
-    }
 
-    const std::vector<std::string>& getPrintCommands() const {
-        return printCommands;
-    }
-
-    void printSchedule() const {
-        std::cout << "Schedule for Process " << processID << ":\n";
-        for (const auto& command : printCommands) {
-            std::cout << "  " << command << "\n";
-        }
-    }
 };
+
