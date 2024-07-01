@@ -1,11 +1,13 @@
+#include "MainMenuCommandHandler.h"
 #include "MainMenuConsole.h"
-//#include "CommandHandler.h"
+#include "CommandHandler.h"
+
 
 #include "Statics.h"
 #include <iostream>
 
-MainMenuConsole::MainMenuConsole(CommandHandler* commandHandler)
-	: commandHandler(commandHandler) {}
+MainMenuConsole::MainMenuConsole(MainMenuCommandHandler* handler)
+	: handler(handler) {}
 
 void MainMenuConsole::displayPrompt() const {
 	printHeader();
@@ -14,10 +16,10 @@ void MainMenuConsole::displayPrompt() const {
 		std::cout << "Enter Command: ";
 		std::string command = getCommand();
 
-		commandHandler->handleCommand(command);
+		handler->handleCommand(command);
 
-		if (command == "exit") {
-			break;
+		if (handler->shouldExit()) {
+			break; 
 		}
 	}
 }

@@ -6,10 +6,11 @@ class MainMenuConsole :
     public Console
 {
 public:
-    MainMenuConsole(CommandHandler* commandHandler);
+    MainMenuConsole(MainMenuCommandHandler* handler);
     void displayPrompt() const override;
     std::string getCommand() const override;
+
 private:
-    CommandHandler* commandHandler;
+    MainMenuCommandHandler* handler;
 };
 

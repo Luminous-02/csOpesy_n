@@ -7,9 +7,10 @@ int main() {
 
 	ConsoleManager consoleManager;
 
-	MainMenuCommandHandler mainMenuCommandHandler(consoleManager);
-	MainMenuConsole mainMenuConsole(&mainMenuCommandHandler);
-	mainMenuConsole.displayPrompt();
+	//MainMenuCommandHandler mainMenuCommandHandler(consoleManager);
+	//MainMenuConsole mainMenuConsole(&mainMenuCommandHandler);
+	//mainMenuConsole.displayPrompt();
 
+	consoleManager.showMainMenu(); 
 	return 0;
 }

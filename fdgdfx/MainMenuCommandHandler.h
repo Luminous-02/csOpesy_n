@@ -2,20 +2,23 @@
 
 #include "CommandHandler.h"
 #include "ConsoleManager.h"
-#include <string>
-#include <memory>
-#include <map>
+
+class ConsoleManager;
+class Process;
 
 class MainMenuCommandHandler : public CommandHandler
 {
 public:
 	MainMenuCommandHandler(ConsoleManager& consoleManager);
 	void handleCommand(const std::string& command) const override;
+	bool shouldExit() const override; 
+
+	void resetExitFlag() override; 
 
 private:
+	ConsoleManager& consoleManager;
 	std::map<std::string, std::unique_ptr<Process>> processes;
 
-	ConsoleManager& consoleManager;
-	mutable bool initialized;
+	mutable bool exitFlag = false; 
 };
 

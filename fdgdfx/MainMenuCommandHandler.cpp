@@ -5,13 +5,15 @@
 #include <fstream> 
 #include <sstream>
 
+class ConsoleManager; 
+
 MainMenuCommandHandler::MainMenuCommandHandler(ConsoleManager& consoleManager)
-	: consoleManager(consoleManager), initialized(false) {}
+	: consoleManager(consoleManager){}
 
 void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 
 	//check the valid commands for the MainMenu
-	if (!initialized) {
+	if (!consoleManager.isInitialized()) {
 		if (command == "initialize") {
 			//read config.txt
 			std::ifstream configFile("config.txt");
@@ -31,7 +33,7 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 				}
 
 				std::cout << "Initialization complete. \n";
-				initialized = true;
+				consoleManager.setInitialized(true);
 
 			}
 			else {
@@ -46,6 +48,7 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 		if (command.substr(0, 9) == "screen -s") {
 			std::string processName = command.substr(10); //extract the processName
 			consoleManager.displayProcessScreen(processName);
+			const_cast<MainMenuCommandHandler*>(this)->exitFlag = true;
 		}
 		else if (command == "screen") {
 			std::cout << "doing something\n";
@@ -60,7 +63,8 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 			std::cout << "doing something\n";
 		}
 		else if (command == "exit") {
-
+			const_cast<MainMenuCommandHandler*>(this)->exitFlag = true;
+			//exitFlag = true; 
 		}
 		else if (command == "clear") {
 			system("cls");
@@ -70,4 +74,12 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 			std::cout << "Unknown Command: " << command << std::endl;
 		}
 	}
+}
+
+bool MainMenuCommandHandler::shouldExit() const {
+	return exitFlag; 
+}
+
+void MainMenuCommandHandler::resetExitFlag() {
+	exitFlag = false; 
 }

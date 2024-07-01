@@ -24,12 +24,14 @@
     <ClCompile Include="MainMenuCommandHandler.cpp" />
     <ClCompile Include="MainMenuConsole.cpp" />
     <ClCompile Include="Process.cpp" />
+    <ClCompile Include="ProcessCommandHandler.cpp" />
     <ClCompile Include="ProcessConsole.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="ConsoleManager.h" />
+    <ClInclude Include="ProcessCommandHandler.h" />
     <ClInclude Include="Statics.h" />
     <ClInclude Include="MainMenuCommandHandler.h" />
     <ClInclude Include="MainMenuConsole.h" />
