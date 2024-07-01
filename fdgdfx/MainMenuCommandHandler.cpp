@@ -8,13 +8,17 @@
 class ConsoleManager; 
 
 MainMenuCommandHandler::MainMenuCommandHandler(ConsoleManager& consoleManager)
-	: consoleManager(consoleManager){}
+	: consoleManager(consoleManager), configManager(configManager){}
 
 void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 
 	//check the valid commands for the MainMenu
 	if (!consoleManager.isInitialized()) {
 		if (command == "initialize") {
+
+			consoleManager.getConfigurationManager().loadConfig("config.txt");
+			consoleManager.getConfigurationManager().printConfig();
+
 			std::cout << "Initialization complete. \n";
 			consoleManager.setInitialized(true);
 		}

@@ -21,7 +21,7 @@ void ConsoleManager::displayPrompt() const {
 std::string ConsoleManager::getCommand() const {
     return console->getCommand();
 }
-
+ 
 void ConsoleManager::addProcess(const std::string& processName, std::unique_ptr<Process> process) {
     processes[processName] = std::move(process);
 }
@@ -89,4 +89,8 @@ bool ConsoleManager::isInitialized() const {
 
 void ConsoleManager::setInitialized(bool init) {
     initialized = init; 
+}
+
+ConfigurationManager& ConsoleManager::getConfigurationManager() {
+    return configManager;
 }

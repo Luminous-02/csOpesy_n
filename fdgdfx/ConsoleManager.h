@@ -11,6 +11,7 @@
 #include "CommandHandler.h"
 #include "ProcessCommandHandler.h"
 #include "MainMenuCommandHandler.h"
+#include "ConfigurationManager.h"
 
 class MainMenuCommandHandler;
 
@@ -19,8 +20,6 @@ class ConsoleManager
 {
 public:
 	ConsoleManager();
-
-	//ConsoleManager(Console* console);
 
 	void setConsole(Console* console);
 
@@ -37,10 +36,11 @@ public:
 	bool isInitialized() const; //check if system has been initialized
 	void setInitialized(bool initialized); 
 
+	ConfigurationManager& getConfigurationManager();
+
 private:
 	Console* console;
-	//MainMenuCommandHandler mainMenuCommandHandler; 
-	//ProcessCommandHandler processCommandHandler;
+	
 	std::map<std::string, std::unique_ptr<Process>> processes;
 
 	CommandHandler* currentCommandHandler; 
@@ -48,5 +48,7 @@ private:
     std::unique_ptr<ProcessCommandHandler> processCommandHandler;
 
 	bool initialized;
+
+	ConfigurationManager configManager;
 };
 

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConfigurationManager.cpp" />
     <ClCompile Include="ConsoleManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuCommandHandler.cpp" />
@@ -29,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandHandler.h" />
+    <ClInclude Include="ConfigurationManager.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="ConsoleManager.h" />
     <ClInclude Include="ProcessCommandHandler.h" />

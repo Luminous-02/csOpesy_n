@@ -1,3 +1,8 @@
-process1 1 15
-process2 2 10
-process3 3 20
+num-cpu 4
+scheduler "rr"
+quantum-cycles 5
+preemptive 1
+batch-process-freq 0.5
+min-ins 1000
+max-ins 2000
+delay-per-exec 0.25
