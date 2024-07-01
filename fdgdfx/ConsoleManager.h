@@ -30,6 +30,8 @@ public:
 	void addProcess(const std::string& processName, std::unique_ptr<Process> process);
 	void displayProcessScreen(const std::string& processName);
 
+	void createNewProcess(const std::string& processName); 
+
 	void showMainMenu(); 
 
 	bool isInitialized() const; //check if system has been initialized

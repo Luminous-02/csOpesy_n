@@ -15,30 +15,8 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 	//check the valid commands for the MainMenu
 	if (!consoleManager.isInitialized()) {
 		if (command == "initialize") {
-			//read config.txt
-			std::ifstream configFile("config.txt");
-
-			if (configFile.is_open()) {
-				std::string line;
-
-				while (std::getline(configFile, line)) {
-					std::istringstream iss(line);
-					std::string name;
-					int id, totalLines;
-
-					if (iss >> name >> id >> totalLines) {
-						std::unique_ptr<Process> process = std::make_unique<Process>(name, id, totalLines);
-						consoleManager.addProcess(name, std::move(process));
-					}
-				}
-
-				std::cout << "Initialization complete. \n";
-				consoleManager.setInitialized(true);
-
-			}
-			else {
-				std::cout << "Unable to open config.txt";
-			}
+			std::cout << "Initialization complete. \n";
+			consoleManager.setInitialized(true);
 		}
 		else {
 			std::cout << "Please initialize first using 'initialize' command. \n";
@@ -47,6 +25,8 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 	else {
 		if (command.substr(0, 9) == "screen -s") {
 			std::string processName = command.substr(10); //extract the processName
+			system("cls"); 
+			consoleManager.createNewProcess(processName);
 			consoleManager.displayProcessScreen(processName);
 			const_cast<MainMenuCommandHandler*>(this)->exitFlag = true;
 		}

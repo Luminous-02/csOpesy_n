@@ -26,6 +26,34 @@ void ConsoleManager::addProcess(const std::string& processName, std::unique_ptr<
     processes[processName] = std::move(process);
 }
 
+void ConsoleManager::createNewProcess(const std::string& processName) {
+    system("cls");
+
+    std::cout << "Proces: " << processName << std::endl;
+    std::cout << "ID: "; 
+
+    //get the id
+    int id;
+    std::cin >> id;
+    std::cin.ignore();
+
+    std::cout << "\n\n"; 
+
+    std::cout << "Lines of code: ";
+
+    //get the total lines of code
+    int totalLines;
+    std::cin >> totalLines;
+    std::cin.ignore();
+
+    //create the process
+    auto process = std::make_unique<Process>(processName, id, totalLines);
+
+    //add to the manager
+    addProcess(processName, std::move(process));
+}
+
+//for screen -r command
 void ConsoleManager::displayProcessScreen(const std::string& processName) {
 
     auto it = processes.find(processName);
