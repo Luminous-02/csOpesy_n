@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F9456E4C-F2A4-4EAE-A0B2-BCD2103E41B2}|fdgdfx.vcxproj|C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\marquee.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F9456E4C-F2A4-4EAE-A0B2-BCD2103E41B2}|fdgdfx.vcxproj|solutionrelative:marquee.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9456E4C-F2A4-4EAE-A0B2-BCD2103E41B2}|fdgdfx.vcxproj|C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\marquee.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F9456E4C-F2A4-4EAE-A0B2-BCD2103E41B2}|fdgdfx.vcxproj|solutionrelative:marquee.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9456E4C-F2A4-4EAE-A0B2-BCD2103E41B2}|fdgdfx.vcxproj|C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\MainMenuCommandHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F9456E4C-F2A4-4EAE-A0B2-BCD2103E41B2}|fdgdfx.vcxproj|solutionrelative:MainMenuCommandHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9456E4C-F2A4-4EAE-A0B2-BCD2103E41B2}|fdgdfx.vcxproj|C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F9456E4C-F2A4-4EAE-A0B2-BCD2103E41B2}|fdgdfx.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "marquee.h",
+              "DocumentMoniker": "C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\marquee.h",
+              "RelativeDocumentMoniker": "marquee.h",
+              "ToolTip": "C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\marquee.h",
+              "RelativeToolTip": "marquee.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-07-05T05:02:58.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "marquee.cpp",
+              "DocumentMoniker": "C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\marquee.cpp",
+              "RelativeDocumentMoniker": "marquee.cpp",
+              "ToolTip": "C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\marquee.cpp",
+              "RelativeToolTip": "marquee.cpp",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAkwGkAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-05T04:52:23.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainMenuCommandHandler.cpp",
+              "DocumentMoniker": "C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\MainMenuCommandHandler.cpp",
+              "RelativeDocumentMoniker": "MainMenuCommandHandler.cpp",
+              "ToolTip": "C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\MainMenuCommandHandler.cpp",
+              "RelativeToolTip": "MainMenuCommandHandler.cpp",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAAIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-05T04:51:36.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\mark\\source\\repos\\csOpesy_n\\fdgdfx\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-05T04:51:28.206Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
