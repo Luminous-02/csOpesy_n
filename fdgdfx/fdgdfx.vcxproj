@@ -21,19 +21,25 @@
   <ItemGroup>
     <ClCompile Include="ConfigurationManager.cpp" />
     <ClCompile Include="ConsoleManager.cpp" />
+    <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuCommandHandler.cpp" />
     <ClCompile Include="MainMenuConsole.cpp" />
+    <ClCompile Include="PrintCommand.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessCommandHandler.cpp" />
     <ClCompile Include="ProcessConsole.cpp" />
+    <ClCompile Include="Scheduler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="ConfigurationManager.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="ConsoleManager.h" />
+    <ClInclude Include="ICommand.h" />
+    <ClInclude Include="PrintCommand.h" />
     <ClInclude Include="ProcessCommandHandler.h" />
+    <ClInclude Include="Scheduler.h" />
     <ClInclude Include="Statics.h" />
     <ClInclude Include="MainMenuCommandHandler.h" />
     <ClInclude Include="MainMenuConsole.h" />

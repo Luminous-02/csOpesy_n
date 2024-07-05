@@ -1,25 +1,34 @@
 #pragma once
 
 #include <string>
+#include <vector>
+#include <memory>
 #include <iostream>
+#include "ICommand.h"
 
-class Process
-{
+class ICommand; 
+
+class Process {
 public:
-	enum class Status {
-		Running,
-		Finished
+	enum class ProcessState {
+		READY,
+		RUNNING,
+		WAITING,
+		FINISHED
 	};
 
-	Process(const std::string& name, int id, int lines);
+	Process(const std::string& name, int id, int totalLines);
 
 	const std::string& getName() const;
 	int getID() const;
 	int getCurrentLine() const;
+	ProcessState getStatus() const;
+	//int getArrivalTime() const;
 	int getTotalLines() const;
-	Status getStatus() const;
-
-	void runProcess(); //simulate running a process
+	
+	void addCommand(std::unique_ptr<ICommand> command);
+	void runProcess(); 
+	
 
 private:
 	std::string name;
@@ -27,8 +36,11 @@ private:
 	int id;
 	int currentLine;
 	int totalLines;
-	Status status;
+	int cpuCoreID;
 
+	int arrivalTime; 
 
+	ProcessState currentState;
+
+	std::vector < std::shared_ptr<ICommand>> commandList;
 };
-

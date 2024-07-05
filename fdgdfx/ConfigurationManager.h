@@ -2,10 +2,12 @@
 
 #include <map>
 #include <string>
+#include <unordered_map>
 
 class ConfigurationManager
 {
 public:
+	void trim(std::string& str);
 	void loadConfig(const std::string& configFilePath);
 	std::string getConfigParameter(const std::string& key) const;
 
@@ -21,7 +23,13 @@ public:
 	int getMaxIns() const;
 	double getDelayPerExec() const; 
 
+	
 private:
+	int getParameterAsInt(const std::string& key) const;
+	double getParameterAsDouble(const std::string& key) const;
+	std::string getParameterAsString(const std::string& key) const;
+
 	std::map<std::string, std::string> configParameters; 
+	
 };
 

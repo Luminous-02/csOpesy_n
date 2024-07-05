@@ -2,13 +2,14 @@
 #include "ProcessConsole.h" 
 #include "MainMenuConsole.h"
 
-
-ConsoleManager::ConsoleManager() 
-    : console(nullptr), 
+ConsoleManager::ConsoleManager(ConfigurationManager& configManager)
+    : console(nullptr),
     mainMenuCommandHandler(std::make_unique<MainMenuCommandHandler>(*this)),
     processCommandHandler(std::make_unique<ProcessCommandHandler>(*this)),
     currentCommandHandler(mainMenuCommandHandler.get()),
-    initialized(false){}
+    initialized(false),
+    configManager(configManager){
+}
 
 void ConsoleManager::setConsole(Console* newConsole) {
     console = newConsole;
@@ -55,11 +56,14 @@ void ConsoleManager::createNewProcess(const std::string& processName) {
 
 //for screen -r command
 void ConsoleManager::displayProcessScreen(const std::string& processName) {
-
+    
     auto it = processes.find(processName);
 
     if (it != processes.end()) {
         system("cls");
+
+        //configManager.getNumCpu();
+        //scheduler.start();
 
         ProcessConsole processConsole (it->second.get(), processCommandHandler.get());
         
@@ -93,4 +97,31 @@ void ConsoleManager::setInitialized(bool init) {
 
 ConfigurationManager& ConsoleManager::getConfigurationManager() {
     return configManager;
+}
+
+std::unordered_map<std::string, std::unique_ptr<Process>>& ConsoleManager::getSchedProcesses() {
+    return processes;
+}
+
+std::string ConsoleManager::getCurrentProcessName() const {
+    std::cout << "this is process " << currentProcessName << std::endl; 
+    return currentProcessName;
+}
+
+void ConsoleManager::listProcesses() const {
+    if (processes.empty()) {
+        std::cout << "No processes created yet." << std::endl;
+        return;
+    }
+
+    std::cout << "Currently stored processes:" << std::endl;
+    for (const auto& pair : processes) {
+        const Process* process = pair.second.get();
+        std::cout << "Process Name: " << process->getName() << std::endl;
+        std::cout << "Process ID: " << process->getID() << std::endl;
+        std::cout << "Current Line: " << process->getCurrentLine() << std::endl;
+        std::cout << "Total Lines: " << process->getTotalLines() << std::endl;
+        std::cout << "Status: " << (process->getStatus() == Process::ProcessState::FINISHED ? "Finished" : "Running") << std::endl;
+        std::cout << "-------------------------------------" << std::endl;
+    }
 }

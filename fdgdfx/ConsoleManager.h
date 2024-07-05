@@ -7,11 +7,14 @@
 #include <iostream>
 #include <map>
 #include <memory>
+#include <unordered_map>
 
 #include "CommandHandler.h"
 #include "ProcessCommandHandler.h"
 #include "MainMenuCommandHandler.h"
 #include "ConfigurationManager.h"
+#include "Scheduler.h"
+
 
 class MainMenuCommandHandler;
 
@@ -19,7 +22,9 @@ class MainMenuCommandHandler;
 class ConsoleManager
 {
 public:
-	ConsoleManager();
+	ConsoleManager(ConfigurationManager& configurationManager);
+	
+	ConfigurationManager& getConfigurationManager();
 
 	void setConsole(Console* console);
 
@@ -36,12 +41,14 @@ public:
 	bool isInitialized() const; //check if system has been initialized
 	void setInitialized(bool initialized); 
 
-	ConfigurationManager& getConfigurationManager();
+	std::unordered_map<std::string, std::unique_ptr<Process>>& getSchedProcesses(); 
+
+	std::string getCurrentProcessName() const; 
+
+	void listProcesses() const;
 
 private:
 	Console* console;
-	
-	std::map<std::string, std::unique_ptr<Process>> processes;
 
 	CommandHandler* currentCommandHandler; 
 	std::unique_ptr<MainMenuCommandHandler> mainMenuCommandHandler;
@@ -50,5 +57,9 @@ private:
 	bool initialized;
 
 	ConfigurationManager configManager;
+
+	std::unordered_map<std::string, std::unique_ptr<Process>> processes;
+
+	std::string currentProcessName;
 };
 

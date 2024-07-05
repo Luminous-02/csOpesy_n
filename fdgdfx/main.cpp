@@ -2,10 +2,14 @@
 #include "MainMenuConsole.h"
 #include "MainMenuCommandHandler.h"
 #include "ConsoleManager.h"
+#include "ConfigurationManager.h"
 
 int main() {
 
-	ConsoleManager consoleManager;
+
+	ConfigurationManager configManager; 
+
+	ConsoleManager consoleManager(configManager);
 
 	//MainMenuCommandHandler mainMenuCommandHandler(consoleManager);
 	//MainMenuConsole mainMenuConsole(&mainMenuCommandHandler);

@@ -3,6 +3,7 @@
 #include "CommandHandler.h"
 #include "ConsoleManager.h"
 #include "ConfigurationManager.h"
+#include "Scheduler.h"
 
 class ConsoleManager;
 class Process;
@@ -11,9 +12,9 @@ class MainMenuCommandHandler : public CommandHandler
 {
 public:
 	MainMenuCommandHandler(ConsoleManager& consoleManager);
+
 	void handleCommand(const std::string& command) const override;
 	bool shouldExit() const override; 
-
 	void resetExitFlag() override; 
 
 private:
@@ -21,7 +22,7 @@ private:
 	std::map<std::string, std::unique_ptr<Process>> processes;
 
 	mutable bool exitFlag = false; 
-
+	mutable std::unique_ptr<Scheduler> scheduler;
 	ConfigurationManager& configManager;
 };
 
