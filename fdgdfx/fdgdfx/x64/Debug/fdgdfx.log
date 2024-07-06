@@ -1,8 +1,2 @@
-﻿  ConsoleManager.cpp
-  MainMenuCommandHandler.cpp
-  MainMenuConsole.cpp
-  ProcessCommandHandler.cpp
-  main.cpp
-  Generating Code...
-  LINK : C:\Users\clair\Desktop\CSOPESY_0001\csOpesy_n\fdgdfx\x64\Debug\fdgdfx.exe not found or not built by the last incremental link; performing full link
+﻿  ProcessCommandHandler.cpp
   fdgdfx.vcxproj -> C:\Users\clair\Desktop\CSOPESY_0001\csOpesy_n\fdgdfx\x64\Debug\fdgdfx.exe

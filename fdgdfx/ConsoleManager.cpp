@@ -52,6 +52,8 @@ void ConsoleManager::createNewProcess(const std::string& processName) {
 
     //add to the manager
     addProcess(processName, std::move(process));
+
+    currentProcessName = processName;
 }
 
 //for screen -r command
@@ -62,6 +64,7 @@ void ConsoleManager::displayProcessScreen(const std::string& processName) {
     if (it != processes.end()) {
         system("cls");
 
+        currentProcessName = processName;
         //configManager.getNumCpu();
         //scheduler.start();
 
@@ -104,7 +107,7 @@ std::unordered_map<std::string, std::unique_ptr<Process>>& ConsoleManager::getSc
 }
 
 std::string ConsoleManager::getCurrentProcessName() const {
-    std::cout << "this is process " << currentProcessName << std::endl; 
+    //std::cout << "this is process " << currentProcessName << std::endl; 
     return currentProcessName;
 }
 

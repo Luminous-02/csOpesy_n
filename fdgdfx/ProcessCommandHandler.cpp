@@ -12,14 +12,26 @@ void ProcessCommandHandler::handleCommand(const std::string& command) const {
 		const std::string& currentProcessName = consoleManager.getCurrentProcessName(); //search by name
 
 		auto it = processes.find(currentProcessName); 
+
 		if (it != processes.end()) {
 			Process* process = it->second.get();
-			std::cout << "Process Name: " << process->getName() << std::endl;
-			std::cout << "Process ID: " << process->getID() << std::endl;
-			std::cout << "Current Line: " << process->getCurrentLine() << std::endl;
-			std::cout << "Total Lines: " << process->getTotalLines() << std::endl;
+
+			std::cout << "\nProcess: " << process->getName() << std::endl;
+			std::cout << "ID: " << process->getID() << std::endl;
+
+			std::cout << "\n"; 
+
 			if (process->getStatus() == Process::ProcessState::FINISHED) {
 				std::cout << "Finished!" << std::endl;
+
+				std::cout << "\n";
+			}
+			else {
+
+				std::cout << "Current intstruction line: " << process->getCurrentLine() << std::endl;
+				std::cout << "Lines of code: " << process->getTotalLines() << std::endl;
+
+				std::cout << "\n";
 			}
 		}
 		else {
