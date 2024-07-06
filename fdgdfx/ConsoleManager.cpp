@@ -62,6 +62,12 @@ void ConsoleManager::displayProcessScreen(const std::string& processName) {
     auto it = processes.find(processName);
 
     if (it != processes.end()) {
+
+        if (it->second->getStatus() == Process::ProcessState::FINISHED) {
+            std::cout << "Process " << processName << "not found." << std::endl;
+            return; 
+        }
+
         system("cls");
 
         currentProcessName = processName;

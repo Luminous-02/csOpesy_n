@@ -56,6 +56,15 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 
 			nonConstThis->exitFlag = true;
 		}
+		else if (command.substr(0, 9) == "screen -r") {
+			std::string processName = command.substr(10);
+			system("cls");
+
+			consoleManager.displayProcessScreen(processName);
+
+			MainMenuCommandHandler* nonConstThis = const_cast<MainMenuCommandHandler*>(this);
+			nonConstThis->exitFlag = true;
+		}
 		else if (command == "screen -ls") {
 			consoleManager.listProcesses();
 		}
