@@ -108,7 +108,9 @@ void marqueeWorker(SHORT& x, SHORT& y, SHORT& xDir, SHORT& yDir, const std::stri
         {
             break; // Exit the loop
         }
-        
+        system("cls"); // Clear the console screen
+        printStaticHeader(); // Print the static header again
+
         // Get the current console window size
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
@@ -131,16 +133,13 @@ void marqueeWorker(SHORT& x, SHORT& y, SHORT& xDir, SHORT& yDir, const std::stri
         x += xDir; // Move the message horizontally
         y += yDir; // Move the message vertically
 
-        // Set the cursor position and print the message
-        COORD coord = { x, y };
-        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+        // Set the cursor position back to the start of the cleared area and print the message
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), oldCoord);
         std::cout << message;
 
         std::this_thread::sleep_for(std::chrono::milliseconds(60)); // Delay to match the refresh rate
     }
 }
-
-
 
 // Function to print the static header
 void printStaticHeader()
