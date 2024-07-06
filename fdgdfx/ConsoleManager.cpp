@@ -39,7 +39,7 @@ void ConsoleManager::createNewProcess(const std::string& processName) {
     std::cin >> id;
     std::cin.ignore();
 
-    std::cout << "\n\n"; 
+    //std::cout << "\n\n"; 
 
     std::cout << "Lines of code: ";
 
@@ -136,7 +136,8 @@ void ConsoleManager::listProcesses() const {
     }
 }
 void ConsoleManager::reportlistProcesses() const {
-    std::ofstream logFile("csopesy-log.txt"); // Open the log file
+    std::ofstream logFile("./Source Files/csopesy-log.txt");
+
 
     if (processes.empty()) {
         logFile << "No processes created yet." << std::endl;
