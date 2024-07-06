@@ -39,7 +39,7 @@ void ConfigurationManager::loadConfig(const std::string& configFilePath) {
                 }
 
                 // Debug output
-                std::cout << "Read key: " << key << " with value: " << value << std::endl;
+               // std::cout << "Read key: " << key << " with value: " << value << std::endl;
             }
         }
     } else {
@@ -100,7 +100,7 @@ void ConfigurationManager::printConfig() const {
 int ConfigurationManager::getParameterAsInt(const std::string& key) const {
     auto it = configParameters.find(key);
     if (it != configParameters.end()) {
-        std::cout << "found it!\n";
+       // std::cout << "found it!\n";
         return std::stoi(it->second);
     } else {
         std::cerr << "Can't find: " << key << std::endl;
@@ -111,7 +111,7 @@ int ConfigurationManager::getParameterAsInt(const std::string& key) const {
 double ConfigurationManager::getParameterAsDouble(const std::string& key) const {
     auto it = configParameters.find(key);
     if (it != configParameters.end()) {
-        std::cout << "found it!";
+       // std::cout << "found it!";
         return std::stod(it->second);
     } else {
         std::cerr << "Key not found: " << key << std::endl;

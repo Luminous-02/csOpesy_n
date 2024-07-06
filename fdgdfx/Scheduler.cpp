@@ -18,8 +18,8 @@ Scheduler::~Scheduler() {
 }
 
 void Scheduler::start() {
-	std::cout << "Starting scheduler with " << numCores << " cores and algorithm: " << algorithm << std::endl;
-	std::cout << "Scheduler has " << quantumCycles << "quantum cycles and is " << preemptive << std::endl;
+	//std::cout << "Starting scheduler with " << numCores << " cores and algorithm: " << algorithm << std::endl;
+	//std::cout << "Scheduler has " << quantumCycles << "quantum cycles and is " << preemptive << std::endl;
 
 	if (algorithm == "fcfs") {
 		scheduleFCFS();
@@ -42,7 +42,7 @@ void Scheduler::scheduleFCFS() {
 }
 
 void Scheduler::workerFunction(int coreId) {
-	std::cout << "Core " << coreId << "Started executing tasks\n" << std::endl; 
+	//std::cout << "Core " << coreId << "Started executing tasks\n" << std::endl; 
 
 	while (!shouldStop) {
 
@@ -63,7 +63,7 @@ void Scheduler::workerFunction(int coreId) {
 		}
 
 		if (process) {
-			std::cout << "Core " << coreId << " is process: " << process->getName() << "with ID: " << process->getID() << std::endl;
+			//std::cout << "Core " << coreId << " is process: " << process->getName() << "with ID: " << process->getID() << std::endl;
 
 			process->runProcess(); 
 

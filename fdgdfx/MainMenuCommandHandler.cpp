@@ -24,7 +24,7 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 		if (command == "initialize") {
 
 			consoleManager.getConfigurationManager().loadConfig("config.txt");
-			consoleManager.getConfigurationManager().printConfig();
+			//consoleManager.getConfigurationManager().printConfig();
 
 			std::cout << "Initialization complete. \n";
 			consoleManager.setInitialized(true);
