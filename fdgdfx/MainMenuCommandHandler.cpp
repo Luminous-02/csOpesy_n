@@ -1,7 +1,7 @@
 #include "MainMenuCommandHandler.h"
 #include "ConsoleManager.h"
 #include "Scheduler.h"
-
+#include "marquee.h"
 #include "Statics.h"
 #include <iostream>
 #include <fstream> 
@@ -69,7 +69,9 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 			consoleManager.listProcesses();
 		}
 		else if (command == "marquee") {
-			std::cout << "doing something\n";
+			displayMarquee();
+			system("cls");
+			printHeader();
 		}
 		else if (command == "scheduler-test") {
 			std::cout << "doing something\n";

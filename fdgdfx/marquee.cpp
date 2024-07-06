@@ -12,8 +12,10 @@ std::mutex mtx; // Mutex for synchronizing access to console functions
 // Function prototypes
 void handleUserInput(std::string& userInput, bool& exitFlag);
 
-void marqueeWorker(SHORT& x, SHORT& y, SHORT& xDir, SHORT& yDir, const std::string& message);
+void marqueeWorker(SHORT& x, SHORT& y, SHORT& xDir, SHORT& yDir, const std::string& message, bool& exitFlag);
+
 void printStaticHeader();
+
 int displayMarquee()
 {
     // Clear the console screen
@@ -35,7 +37,8 @@ int displayMarquee()
     std::thread userInputThread(handleUserInput, std::ref(userInput), std::ref(exitFlag));
 
     // Start the marquee worker in a separate thread
-    std::thread marqueeThread(marqueeWorker, std::ref(x), std::ref(y), std::ref(xDir), std::ref(yDir), std::ref(message));
+    std::thread marqueeThread(marqueeWorker, std::ref(x), std::ref(y), std::ref(xDir), std::ref(yDir), std::ref(message), std::ref(exitFlag));
+
 
     while (!exitFlag)
     {
@@ -55,6 +58,7 @@ int displayMarquee()
 
     return 0;
 }
+
 void handleUserInput(std::string& userInput, bool& exitFlag)
 {
     char ch;
@@ -95,11 +99,16 @@ void handleUserInput(std::string& userInput, bool& exitFlag)
     }
 }
 
-
-void marqueeWorker(SHORT& x, SHORT& y, SHORT& xDir, SHORT& yDir, const std::string& message)
+void marqueeWorker(SHORT& x, SHORT& y, SHORT& xDir, SHORT& yDir, const std::string& message, bool& exitFlag)
 {
     while (true)
     {
+        // Check if the exitFlag is set to true
+        if (exitFlag)
+        {
+            break; // Exit the loop
+        }
+        
         // Get the current console window size
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);

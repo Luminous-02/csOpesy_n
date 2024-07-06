@@ -25,6 +25,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuCommandHandler.cpp" />
     <ClCompile Include="MainMenuConsole.cpp" />
+    <ClCompile Include="marquee.cpp" />
     <ClCompile Include="PrintCommand.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="ProcessCommandHandler.cpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="ConsoleManager.h" />
     <ClInclude Include="ICommand.h" />
+    <ClInclude Include="marquee.h" />
     <ClInclude Include="PrintCommand.h" />
     <ClInclude Include="ProcessCommandHandler.h" />
     <ClInclude Include="Scheduler.h" />
