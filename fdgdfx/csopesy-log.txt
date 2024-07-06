@@ -1,0 +1,7 @@
+Currently stored processes:
+Process Name: process1
+Process ID: 1
+Current Line: 0
+Total Lines: 2
+Status: Running
+-------------------------------------

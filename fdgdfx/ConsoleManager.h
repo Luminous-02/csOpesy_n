@@ -46,6 +46,7 @@ public:
 	std::string getCurrentProcessName() const; 
 
 	void listProcesses() const;
+	void reportlistProcesses() const;
 
 private:
 	Console* console;

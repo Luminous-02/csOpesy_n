@@ -77,7 +77,7 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 			std::cout << "doing something\n";
 		}
 		else if (command == "report-util") {
-			std::cout << "doing something\n";
+			consoleManager.reportlistProcesses();
 		}
 		else if (command == "exit") {
 			//scheduler->stop();

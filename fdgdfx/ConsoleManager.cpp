@@ -1,3 +1,4 @@
+#include <fstream>
 #include "ConsoleManager.h"
 #include "ProcessConsole.h" 
 #include "MainMenuConsole.h"
@@ -133,4 +134,27 @@ void ConsoleManager::listProcesses() const {
         std::cout << "Status: " << (process->getStatus() == Process::ProcessState::FINISHED ? "Finished" : "Running") << std::endl;
         std::cout << "-------------------------------------" << std::endl;
     }
+}
+void ConsoleManager::reportlistProcesses() const {
+    std::ofstream logFile("csopesy-log.txt"); // Open the log file
+
+    if (processes.empty()) {
+        logFile << "No processes created yet." << std::endl;
+        return;
+    }
+
+    logFile << "Currently stored processes:" << std::endl;
+    for (const auto& pair : processes) {
+        const Process* process = pair.second.get();
+        logFile << "Process Name: " << process->getName() << std::endl;
+        logFile << "Process ID: " << process->getID() << std::endl;
+        logFile << "Current Line: " << process->getCurrentLine() << std::endl;
+        logFile << "Total Lines: " << process->getTotalLines() << std::endl;
+        logFile << "Status: " << (process->getStatus() == Process::ProcessState::FINISHED ? "Finished" : "Running") << std::endl;
+        logFile << "-------------------------------------" << std::endl;
+    }
+
+    logFile.close(); // Close the log file
+
+    std::cout << "Process information has been saved to csopesy-log.txt." << std::endl;
 }
