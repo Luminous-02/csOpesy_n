@@ -21,6 +21,8 @@ public:
 
 	void start();
 	void stop();
+	void executeProcess(Process* process);
+
 
 private:
 	int numCores;
@@ -43,7 +45,6 @@ private:
 	std::condition_variable cv;
 
 	std::vector<bool> coreBusy;
-
 	//add the other members later
 
 	//void runAlgorithm(); 

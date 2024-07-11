@@ -5,7 +5,7 @@
 ProcessCommandHandler::ProcessCommandHandler(ConsoleManager& consoleManager)
 	: consoleManager(consoleManager), exit(false) {}
 
-void ProcessCommandHandler::handleCommand(const std::string& command) const {
+void ProcessCommandHandler::handleCommand(const std::string& command) {
 	if (command == "process -smi") {
 
 		auto& processes = consoleManager.getSchedProcesses(); //get the list

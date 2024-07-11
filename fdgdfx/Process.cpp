@@ -1,4 +1,5 @@
 #include "Process.h"
+#include "PrintCommand.h"
 
 Process::Process(const std::string& name, int id, int totalLines)
 	: name(name),
@@ -6,8 +7,11 @@ Process::Process(const std::string& name, int id, int totalLines)
 	totalLines(totalLines),
 	currentLine(0),
 	cpuCoreID(-1),
-	arrivalTime(arrivalTime),
-	currentState(ProcessState::READY){}
+	arrivalTime(0),
+	currentState(ProcessState::READY)
+{
+initializeCommands();
+}
 
 const std::string& Process::getName() const {
 	return name;
@@ -56,5 +60,12 @@ void Process::runProcess() {
 	if (currentLine >= totalLines) {
 		currentState = ProcessState::FINISHED; 
 		std::cout << "Process " << name << " ID: " << id << " finished execution." << std::endl;
+	}
+}
+
+void Process::initializeCommands() {
+	for (int i = 0; i < totalLines; i++) {
+		std::string commandMessage = "Command " + std::to_string(i + 1);
+		addCommand(std::make_unique<PrintCommand>(id, commandMessage));
 	}
 }

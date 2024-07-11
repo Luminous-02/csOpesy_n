@@ -13,9 +13,11 @@ MainMenuCommandHandler::MainMenuCommandHandler(ConsoleManager& consoleManager)
 	: consoleManager(consoleManager),
 	  configManager(consoleManager.getConfigurationManager()){}
 
+MainMenuCommandHandler::~MainMenuCommandHandler() {
+	stopScheduler();
+}
 
-
-void MainMenuCommandHandler::handleCommand(const std::string& command) const {
+void MainMenuCommandHandler::handleCommand(const std::string& command) {
 
 	//static std::unique_ptr<Scheduler> scheduler;
 
@@ -29,15 +31,8 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 			std::cout << "Initialization complete. \n";
 			consoleManager.setInitialized(true);
 			//consoleManager.getConfigurationManager().getNumCpu(); 
-			
-			scheduler = std::make_unique<Scheduler>(consoleManager.getConfigurationManager().getNumCpu(),
-				consoleManager.getConfigurationManager().getScheduler(),
-				consoleManager.getConfigurationManager().getQuantumCycles(),
-				consoleManager.getConfigurationManager().isPreemptive(),
-				consoleManager.getSchedProcesses());
 
-			scheduler->start();
-			
+			startScheduler();
 		}
 
 		else {
@@ -49,11 +44,18 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 			std::string processName = command.substr(10); //extract the processName
 			system("cls"); 
 			consoleManager.createNewProcess(processName);
+
+			auto& processes = consoleManager.getSchedProcesses();
+			auto it = processes.find(processName);
+			if (it != processes.end()) {
+				scheduler->executeProcess(it->second.get());
+			}
 			
 			MainMenuCommandHandler* nonConstThis = const_cast<MainMenuCommandHandler*>(this);
 
 			consoleManager.displayProcessScreen(processName);
 
+			
 			nonConstThis->exitFlag = true;
 		}
 		else if (command.substr(0, 9) == "screen -r") {
@@ -62,8 +64,7 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 
 			consoleManager.displayProcessScreen(processName);
 
-			MainMenuCommandHandler* nonConstThis = const_cast<MainMenuCommandHandler*>(this);
-			nonConstThis->exitFlag = true;
+			exitFlag = true;
 		}
 		else if (command == "screen -ls") {
 			consoleManager.listProcesses();
@@ -80,14 +81,8 @@ void MainMenuCommandHandler::handleCommand(const std::string& command) const {
 			consoleManager.reportlistProcesses();
 		}
 		else if (command == "exit") {
-			//scheduler->stop();
-			const_cast<MainMenuCommandHandler*>(this)->exitFlag = true;
-			
-			if (scheduler) {
-				scheduler->stop();
-			}
-
-			//exitFlag = true; 
+			exitFlag = true;
+			stopScheduler();
 		}
 		else if (command == "clear") {
 			system("cls");
@@ -105,4 +100,35 @@ bool MainMenuCommandHandler::shouldExit() const {
 
 void MainMenuCommandHandler::resetExitFlag() {
 	exitFlag = false; 
+}
+
+void MainMenuCommandHandler::startScheduler() {
+	scheduler = std::make_unique<Scheduler>(consoleManager.getConfigurationManager().getNumCpu(),
+		consoleManager.getConfigurationManager().getScheduler(),
+		consoleManager.getConfigurationManager().getQuantumCycles(),
+		consoleManager.getConfigurationManager().isPreemptive(),
+		consoleManager.getSchedProcesses());
+
+	schedulerThread = std::thread([this]() {
+		try {
+			scheduler->start();
+		}
+		catch (const std::exception& e) {
+			std::cerr << "Scheduler thread exception: " << e.what() << std::endl;
+		}
+		catch (...) {
+			std::cerr << "Scheduler thread unknown exception" << std::endl;
+		}
+		});
+}
+
+void MainMenuCommandHandler::stopScheduler() {
+	if (scheduler) {
+		scheduler->stop();
+		if (schedulerThread.joinable()) {
+			schedulerThread.join();
+		}
+
+		scheduler.reset();
+	}
 }

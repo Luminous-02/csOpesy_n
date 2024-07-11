@@ -4,6 +4,7 @@
 #include "ConsoleManager.h"
 #include "ConfigurationManager.h"
 
+
 int main() {
 
 
@@ -16,5 +17,6 @@ int main() {
 	//mainMenuConsole.displayPrompt();
 
 	consoleManager.showMainMenu(); 
+
 	return 0;
 }

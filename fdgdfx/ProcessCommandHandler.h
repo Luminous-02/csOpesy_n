@@ -10,7 +10,7 @@ class ProcessCommandHandler :
 public:
     ProcessCommandHandler(ConsoleManager& consoleManager);
 
-    void handleCommand(const std::string& command) const override;
+    void handleCommand(const std::string& command) override;
     bool shouldExit() const override;
 
     void resetExitFlag() override;

@@ -28,6 +28,8 @@ public:
 	
 	void addCommand(std::unique_ptr<ICommand> command);
 	void runProcess(); 
+
+	void initializeCommands();
 	
 
 private:
